@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.startbtn {
+    padding: 10px;
+    background-color: green;
+    color: white;
+}
+
+.crystals {
+    text-align: center;
+    padding: 10px;
+    margin: 25px;
+}
+
+.eachcrystal {
+    margin: 25px;
+    padding: 10px;
+}
+
+.stuff {
+    color: white;
+}
