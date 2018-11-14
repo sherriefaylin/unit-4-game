@@ -8,19 +8,38 @@
 
 
 $(document).ready (function() {
-    var goalScore = "";
+    var goalScore = 0;
     var score = 0;
     var wins = 0
     var losses = 0
 
     function start() {
-    $("#start").on("click", function() {
-        //make this disappear until reset
+
         $("#start").text("");
-        var goalScore = Math.floor(Math.random() * 100 + 19);
-        $("#goalScore").text("Goal: " + goalScore);
-    })};
+        goalScore = Math.floor(Math.random() * 100 + 19);
+        $("#goalScore").text("GOAL: " + goalScore);
+
+
+    };
     start();
+    
+    function reset() {
+        score = 0;
+        start();
+    }
+
+    function win() {
+        wins++;
+        $("#wins").text("WINS: " + wins);
+        reset()
+    }
+
+    function lose() {
+        losses++;
+        $("#losses").text("LOSSES: " + losses);
+        reset()    
+    }
+
 
         //oh my god it's working
         //ASSIGNS VALUE FOR EACH CRYSTAL (NEEDS TO NOT REPEAT THO)
@@ -28,49 +47,82 @@ $(document).ready (function() {
         //lol seems like we need to do them individually instead
         var crystal1 = Math.floor(Math.random() * 10 + 2);
         console.log(crystal1);
+            $("#crystal1").mouseover(function() {
+                $(this).attr('src', 'assets/images/lovegemb.png')
+            })
+            $("#crystal1").mouseout(function() {
+                $(this).attr('src', 'assets/images/lovegema.png')
+            })
+           
             $("#crystal1").on("click", function() {
-                score = score + parseInt(crystal1);
-                $("#currentScore").text("Score: " + score);
+                // $("#crystal1").animate({width: "125px"});
+                score = score + crystal1;
+                $("#currentScore").text("SCORE: " + score);
                 if (score == goalScore) {
-                    $("#wins").text("Wins: " + wins++) 
-                } else if (score > goalScore) {
-                    $("#losses").text("Losses: " + losses++)
+                    win();
+                } 
+                else if (score > goalScore) {
+                    lose();
                 }
             });
 
         var crystal2 = Math.floor(Math.random() * 10 + 2);
         console.log(crystal2);
+         $("#crystal2").mouseover(function() {
+                $(this).attr('src', 'assets/images/happygemb.png')
+            })
+            $("#crystal2").mouseout(function() {
+                $(this).attr('src', 'assets/images/happygema.png')
+            })
         $("#crystal2").on("click", function() {
-            score = score + parseInt(crystal2);
-            $("#currentScore").text("Score: " + score);
-                if (score == goalScore) {
-                    $("#wins").text("Wins: " + wins++) 
-                } else if (score > goalScore) {
-                    $("#losses").text("Losses: " + losses++)
-                }
+            score = score + crystal2;
+            $("#currentScore").text("SCORE: " + score);
+            if (score == goalScore) {
+                win();
+            } 
+            else if (score > goalScore) {
+                lose();
+            }
         });
 
         var crystal3 = Math.floor(Math.random() * 10 + 2);
         console.log(crystal3);
+        $("#crystal3").mouseover(function() {
+            $(this).attr('src', 'assets/images/grumpygemb.png')
+        })
+        $("#crystal3").mouseout(function() {
+            $(this).attr('src', 'assets/images/grumpygema.png')
+        })
         $("#crystal3").on("click", function() {
-            score = score + parseInt(crystal3);
-            $("#currentScore").text("Score: " + score);
+            score = score + crystal3;
+            $("#currentScore").text("SCORE: " + score);
             if (score == goalScore) {
-                $("#wins").text("Wins: " + wins++) 
-            } else if (score > goalScore) {
-                $("#losses").text("Losses: " + losses++)
+                win();
+            } 
+            else if (score > goalScore) {
+                lose();
             }
         });
+
+
         var crystal4 = Math.floor(Math.random() * 10 + 2);
         console.log(crystal4);
+        $("#crystal4").mouseover(function() {
+            $(this).attr('src', 'assets/images/sadgemb.png')
+        })
+        $("#crystal4").mouseout(function() {
+            $(this).attr('src', 'assets/images/sadgema.png')
+        })
+
         $("#crystal4").on("click", function() {
-            score = score + parseInt(crystal4);
-            $("#currentScore").text("Score: " + score);
+            score = score + crystal4;
+            $("#currentScore").text("SCORE: " + score);
             if (score == goalScore) {
-                $("#wins").text("Wins: " + wins++) 
-            } else if (score > goalScore) {
-                $("#losses").text("Losses: " + losses++)
+                win();
             } 
+            else if (score > goalScore) {
+                lose();
+            }
         });
         
         // function nextRound() {
@@ -101,6 +153,8 @@ $(document).ready (function() {
         //     // var updatedScore = 
         //     $("#score").text(c1);
         });
+
+        // .attr("data-stuff")
     
 
 
